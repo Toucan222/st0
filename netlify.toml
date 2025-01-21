@@ -1,0 +1,29 @@
+[build]
+  base = "/"
+  publish = "out"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[context.production.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "@supabase_url"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "@supabase_key"
+  DEEPSEEK_API_KEY = "@deepseek_key"
+  ANALYTICS_ID = "@analytics_id"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "@supabase_url_staging"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "@supabase_key_staging"
+  DEEPSEEK_API_KEY = "@deepseek_key_staging"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "@supabase_url_staging"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "@supabase_key_staging"
+  DEEPSEEK_API_KEY = "@deepseek_key_staging"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
